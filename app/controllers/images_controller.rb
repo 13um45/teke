@@ -8,7 +8,7 @@ class ImagesController < ApplicationController
   end
 
   def new
-    @image = Image.new
+    @image = Image.new(:product_id => params[:product_id])
   end
 
   def edit
@@ -17,9 +17,10 @@ class ImagesController < ApplicationController
 
   def create
     @image = Image.new(image_params)
+    @product = Product.find(@image.product_id)
 
     if @image.save
-      redirect_to @image
+      redirect_to @product
     else
       render 'new'
     end
@@ -44,7 +45,7 @@ class ImagesController < ApplicationController
 
 private
   def image_params
-    params.require(:image).permit(:image1)
+    params.require(:image).permit(:image1, :image2, :image3, :image4, :product_id)
   end
 
 end

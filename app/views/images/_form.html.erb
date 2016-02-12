@@ -1,0 +1,38 @@
+<%= form_for(@image, multipart: true) do |f| %>
+
+ <% if @image.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@image.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @image.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :image1 %>
+    <%= f.file_field :image1 %>
+  </div>
+  <div class="field">
+    <%= f.label :image2 %>
+    <%= f.file_field :image2 %>
+  </div>
+  <div class="field">
+    <%= f.label :image3 %>
+    <%= f.file_field :image3 %>
+  </div>
+  <div class="field">
+    <%= f.label :image4 %>
+    <%= f.file_field :image4 %>
+  </div>
+  <%= f.hidden_field :product_id %>
+  <div class="actions">
+    <%= f.submit 'Upload Images' %>
+    <%= link_to 'Back', products_path, class: 'button' %>
+  </div>
+<% end %>

@@ -10,3 +10,20 @@
 
 <h3>quantity</h3>
 <p><%= @product.quantity %></p>
+
+<% if @product.image == nil %>
+<%= link_to "add images", new_image_path(product_id: @product.id) %>
+<% else %>
+
+<h3>image1</h3>
+<p><%= image_tag @images.image1.url %></p>
+
+<h3>image2</h3>
+<p><%= image_tag @images.image2.url %></p>
+
+<h3>image3</h3>
+<p><%= image_tag @images.image3.url %></p>
+
+<h3>image4</h3>
+<p><%= image_tag @images.image4.url %></p>
+<% end %>

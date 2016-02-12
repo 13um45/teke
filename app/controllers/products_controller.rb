@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @images = @product.image
   end
 
   def new
@@ -20,7 +21,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
-      redirect_to @product
+      redirect_to new_image_path(product_id: @product.id)
     else
       render 'new'
     end
@@ -45,7 +46,7 @@ class ProductsController < ApplicationController
 
 private
   def product_params
-    params.require(:product).permit(:image1)
+    params.require(:product).permit(:name, :description, :price, :quantity)
   end
 
 end

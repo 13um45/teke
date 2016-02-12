@@ -25,7 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'paperclip'
 
-gem 'aws-sdk'
+gem 'aws-sdk-v1'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -40,6 +40,8 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.4.1'
   gem 'capybara'
+  gem 'capybara'
+  gem 'capybara-extensions'
 end
 
 group :development do
