@@ -2,6 +2,20 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    #sorting by price
+    #low-high
+    @p_low_high = Product.order(:price)
+    #high-low
+    @p_hig_low = @p_low_high.reverse
+    #sorting by name
+    #a-z
+    @p_name = Product.order(:name)
+    #z-a
+    @p_name_desc = @p_name.reverse
+    #sorting by newest
+    @p_newest = Product.order(:created_at).reverse
+
+
   end
 
   def show

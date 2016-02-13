@@ -1,19 +1,27 @@
-<h1>products</h1>
+<div class="container">
 
-<table>
-  <tr>
-    <th>name</th>
-    <th>description</th>
-    <th>price</th>
-    <th>quantity</th>
-  </tr>
+<!-- Page Header -->
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Products</h1>
+    </div>
+  </div>
 
-  <% @products.each do |product| %>
-    <tr>
-      <td><%= product.name %></td>
-      <td><%= product.description %></td>
-      <td><%= product.price %></td>
-      <td><%= product.quantity %></td>
-    </tr>
-  <% end %>
-</table>
+  <div class="row">
+    <% @products.each do |product| %>
+      <% if product.image == nil %>
+        <p>no image </p>
+      <% else %>
+    <div class="col-md-3 col-sm-6">
+      <%= link_to product do %>
+        <%= image_tag product.image.image1.url ,
+          class: "img-rounded", width: "200", height: "200" %>
+        <%= product.name %>
+      <% end %>
+      <p>$<%= product.price %></p>
+    </div>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>
