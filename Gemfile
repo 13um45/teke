@@ -40,7 +40,6 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.4.1'
   gem 'capybara'
-  gem 'capybara'
   gem 'capybara-extensions'
 end
 
