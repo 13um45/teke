@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  root to: 'sessions#new'
+  root to: 'products#index'
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
   resources :products
   resources :images
   resource :users

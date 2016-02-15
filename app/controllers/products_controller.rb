@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
 
+  before_action :require_logged_in, except: [:index, :show]
+
   def index
     @products = Product.all
     #sorting by price
@@ -24,15 +26,15 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new
+    @product = current_user.products.new
   end
 
   def edit
-    @product = Product.find(params[:id])
+    @product = current_user.products.find(params[:id])
   end
 
   def create
-    @product = Product.new(product_params)
+    @product = current_user.products.new(product_params)
 
     if @product.save
       redirect_to new_image_path(product_id: @product.id)
@@ -42,7 +44,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.find(params[:id])
+    @product = current_user.products.find(params[:id])
 
     if @product.update(product_params)
       redirect_to @product
@@ -52,7 +54,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:id])
+    @product = current_user.products.find(params[:id])
     @product.destroy
 
     redirect_to products_path
@@ -62,5 +64,4 @@ private
   def product_params
     params.require(:product).permit(:name, :description, :price, :quantity)
   end
-
 end

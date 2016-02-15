@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User@user = User.
+    @user = User.
       find_by(username: params[:username].downcase).
       try(:authenticate, params[:password])
 
@@ -13,5 +13,10 @@ class SessionsController < ApplicationController
     else
       render action: 'new'
     end
+  end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to '/login'
   end
 end

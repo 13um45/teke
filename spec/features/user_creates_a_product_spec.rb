@@ -1,7 +1,13 @@
-
 feature 'User creates a product' do
+    background do
+        @user = User.create!(:username => 'user1',
+            :password => 'password',
+            :password_confirmation => 'password')
+
+        @login = session[:user_id] = @user.id
+    end
   scenario 'they see the product info on the page' do
-    visit new_product_path
+    visit new_product_path(@login)
 
     fill_in 'Name', with: 'name'
     fill_in 'Description', with: 'description'
