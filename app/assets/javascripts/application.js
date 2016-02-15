@@ -14,3 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery.zoom.js
+//= require better-simple-slideshow.min.js

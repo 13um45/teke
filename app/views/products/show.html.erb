@@ -1,32 +1,43 @@
+
 <div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-2 mainimg">
+     <div class="bss-slides num1">
+        <figure class="image" >
+            <img src="<%= @images.image1.url %>" width="100%" />
+        </figure>
+         <figure class="image" >
+            <img src="<%= @images.image2.url %>" width="100%" />
+        </figure>
+         <figure class="image" >
+            <img src="<%= @images.image3.url %>" width="100%" />
+        </figure>
+         <figure class="image" >
+            <img src="<%= @images.image4.url %>" width="100%" />
+        </figure>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <p><%= @product.name %></p>
 
-<h3>name</h3>
-<p><%= @product.name %></p>
+      <h3>description</h3>
+      <p><%= @product.description %></p>
 
-<h3>description</h3>
-<p><%= @product.description %></p>
+      <h3>price</h3>
+      <p><%= @product.price %></p>
 
-<h3>price</h3>
-<p><%= @product.price %></p>
+      <h3>quantity</h3>
+      <p><%= @product.quantity %></p>
 
-<h3>quantity</h3>
-<p><%= @product.quantity %></p>
+      <% if @product.image == nil %>
+        <%= link_to "add images", new_image_path(product_id: @product.id) %>
+      <% else %>
+      </div>
+  </div>
 
-<% if @product.image == nil %>
-<%= link_to "add images", new_image_path(product_id: @product.id) %>
-<% else %>
 
-<h3>image1</h3>
-<p><%= image_tag @images.image1.url %></p>
-
-<h3>image2</h3>
-<p><%= image_tag @images.image2.url %></p>
-
-<h3>image3</h3>
-<p><%= image_tag @images.image3.url %></p>
-
-<h3>image4</h3>
-<p><%= image_tag @images.image4.url %></p>
-<% end %>
+    <% end %>
 </div>
+
+
 
