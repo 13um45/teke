@@ -29,6 +29,8 @@ gem 'aws-sdk-v1'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'stripe'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
