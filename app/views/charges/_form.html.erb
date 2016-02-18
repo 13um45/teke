@@ -1,0 +1,27 @@
+<%= form_for [@charge] do |f| %>
+
+  <% if @charge.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@charge.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @charge.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :product_id, value: @product.id %>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="<%= @product.name %>"
+          data-amount="<%= @product.price %>"
+          data-locale="auto"
+          data-billing-address="true"
+          data-shipping-address="true"></script>
+<% end %>
+

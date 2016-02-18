@@ -23,6 +23,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @images = @product.image
+    @charge = @product.charges.new
   end
 
   def new

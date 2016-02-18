@@ -1,26 +1,30 @@
 class ChargesController < ApplicationController
 
   def new
+    @charge = Charge.new
+    @product = @charge.product
   end
 
   def create
-    # Amount in cents
-    @amount = 500
-
-    customer = Stripe::Customer.create(
-      :email => params[:stripeEmail],
-      :source  => params[:stripeToken]
-    )
-
-    charge = Stripe::Charge.create(
-      :customer    => customer.id,
-      :amount      => @amount,
-      :description => 'Rails Stripe customer',
-      :currency    => 'usd'
-    )
-
+    @charge = Charge.new charge_params.
+      merge(email: stripe_params["stripeEmail"],
+        card_token: stripe_params["stripeToken"])
+    raise "Please, check charge errors" unless @charge.valid?
+    @charge.process_payment
+    @charge.save
+    redirect_to products_path, notice: 'Registration was successfully created.'
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to new_charge_path
+    render :new
+  end
+
+private
+
+  def stripe_params
+      params.permit :stripeEmail, :stripeToken
+  end
+
+  def charge_params
+        params.require(:charge).permit(:product_id)
   end
 end
