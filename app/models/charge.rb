@@ -1,5 +1,4 @@
 class Charge < ActiveRecord::Base
-  belongs_to :product
   belongs_to :order
 
     def process_payment
