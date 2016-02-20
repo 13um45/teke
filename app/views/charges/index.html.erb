@@ -1,0 +1,17 @@
+<h1>Listing charges</h1>
+
+<table>
+  <tr>
+    <th>email</th>
+    <th>id</th>
+    <th>date ordered</th>
+  </tr>
+
+  <% @charges.each do |charge| %>
+    <tr>
+      <td><%= charge.email %></td>
+      <td><%= charge.id %></td>
+      <td><%= charge.created_at.strftime("%Y-%m-%d") %></td>
+    </tr>
+  <% end %>
+</table>

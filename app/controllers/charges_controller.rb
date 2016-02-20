@@ -1,8 +1,17 @@
 class ChargesController < ApplicationController
+before_action :require_logged_in, only: [:index, :show]
+  def index
+    @charges = Charge.all
+  end
+
+  def show
+    @charge = Charge.find(params[:id])
+    @order = @charge.order
+    @order_items = @order.order_items
+  end
 
   def new
-    @charge = Charge.new
-    @product = @charge.product
+   redirect_to root_path
   end
 
   def create

@@ -1,0 +1,90 @@
+<p>
+  <strong>customer name:</strong>
+  <%= @charge.name %>
+</p>
+
+<p>
+  <strong>customer address line 1:</strong>
+  <%= @charge.address1 %>
+</p>
+
+<p>
+  <strong>customer address line 2:</strong>
+  <%= @charge.address2 %>
+</p>
+
+<p>
+  <strong>customer city:</strong>
+  <%= @charge.city %>
+</p>
+
+<p>
+  <strong>customer state:</strong>
+  <%= @charge.state %>
+</p>
+
+<p>
+  <strong>customer zip code:</strong>
+  <%= @charge.zip %>
+</p>
+
+<p>
+  <strong>customer country:</strong>
+  <%= @charge.country %>
+</p>
+
+<p>
+  <strong>customer stripe id:</strong>
+  <%= @charge.customer_id %>
+</p>
+
+
+
+<p>
+  <strong>email:</strong>
+  <%= @charge.email %>
+</p>
+
+<p>
+  <strong>ordered date:</strong>
+  <%= @charge.created_at.strftime("%Y-%m-%d") %>
+</p>
+
+<p>
+  <strong>order subtotal:</strong>
+  <%= @order.subtotal %>
+</p>
+
+<p>
+  <strong>order tax:</strong>
+  <%= @order.tax %>
+</p>
+
+<p>
+  <strong>order shipping:</strong>
+  <%= @order.shipping %>
+</p>
+
+<p>
+  <strong>order total:</strong>
+  <%= @order.total %>
+</p>
+
+
+
+<p>
+
+  <% @order_items.each do |order_item| %>
+  <strong>product name:</strong><%= order_item.product.name %><br>
+  <strong>product price:</strong><%= order_item.product.price %><br>
+  <%= order_item.unit_price %>
+  <%= order_item.quantity %>
+  <% end %>
+
+
+
+
+
+</p>
+
+<%= link_to 'Back', charges_path %>
