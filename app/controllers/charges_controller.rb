@@ -12,6 +12,7 @@ class ChargesController < ApplicationController
     raise "Please, check charge errors" unless @charge.valid?
     @charge.process_payment
     @charge.save
+    session[:order_id] = nil
     redirect_to products_path, notice: 'Registration was successfully created.'
   rescue Stripe::CardError => e
     flash[:error] = e.message
@@ -25,6 +26,6 @@ private
   end
 
   def charge_params
-        params.require(:charge).permit(:product_id)
+        params.require(:charge).permit(:order_id)
   end
 end

@@ -1,9 +1,20 @@
 Rails.application.routes.draw do
 
+  get 'order_items/create'
+
+  get 'order_items/update'
+
+  get 'order_items/destroy'
+
+  get 'carts/show'
+
   root to: 'products#index'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+
+  resource :cart, only: [:show]
+  resources :order_items, only: [:create, :update, :destroy]
   resources :products
   resources :charges
   resources :images

@@ -17,6 +17,9 @@ class ProductsController < ApplicationController
     #sorting by newest
     @p_newest = Product.order(:created_at).reverse
 
+    @order_item = current_order.order_items.new
+
+
 
   end
 
