@@ -1,90 +1,81 @@
-<p>
-  <strong>customer name:</strong>
-  <%= @charge.name %>
-</p>
+<div class="container">
 
-<p>
-  <strong>customer address line 1:</strong>
-  <%= @charge.address1 %>
-</p>
-
-<p>
-  <strong>customer address line 2:</strong>
-  <%= @charge.address2 %>
-</p>
-
-<p>
-  <strong>customer city:</strong>
-  <%= @charge.city %>
-</p>
-
-<p>
-  <strong>customer state:</strong>
-  <%= @charge.state %>
-</p>
-
-<p>
-  <strong>customer zip code:</strong>
-  <%= @charge.zip %>
-</p>
-
-<p>
-  <strong>customer country:</strong>
-  <%= @charge.country %>
-</p>
-
-<p>
-  <strong>customer stripe id:</strong>
-  <%= @charge.customer_id %>
-</p>
+<div class="card-group">
+<div class="card">
+  <div class="card-header">Customer Details</div>
+  <div class="card-block">
+    <p class="card-text">
+      <strong><%= @charge.name %></strong><br>
+      <%= @charge.address1 %>
+      <%= @charge.address2 %><br>
+      <%= @charge.city %>,
+      <%= @charge.state %>
+      <%= @charge.zip %><br>
+      <% if @charge.country == "United States" %>
+      <% else %>
+      <%= @charge.country %><br>
+      <% end %>
+      </p>
+      <p class="card-text">
+        <strong>email:</strong>
+        <%= @charge.email %>
+      </p>
+  </div>
+</div>
 
 
 
-<p>
-  <strong>email:</strong>
-  <%= @charge.email %>
-</p>
+    <div class="card">
+      <div class="card-header">
+        Order Summary
+      </div>
+      <div class="card-block">
+        <!-- <h4 class="card-title">Special title treatment</h4> -->
+        <p class="card-text">
+          <strong>date:</strong>
+          <%= @charge.created_at.strftime("%Y-%m-%d") %>
+        </p>
+        <p class="card-text">
+          <strong>subtotal:</strong>
+          <%= number_to_currency @order.subtotal %>
+        </p>
+        <p>
+          <strong>tax:</strong>
+          <%= number_to_currency @order.tax %>
+        </p>
+        <p>
+          <strong>shipping:</strong>
+          <%= number_to_currency @order.shipping %>
+        </p>
+        <p>
+          <strong>total:</strong>
+          <%= number_to_currency @order.total %>
+        </p>
+      </div>
+    </div>
+    </div>
 
-<p>
-  <strong>ordered date:</strong>
-  <%= @charge.created_at.strftime("%Y-%m-%d") %>
-</p>
-
-<p>
-  <strong>order subtotal:</strong>
-  <%= @order.subtotal %>
-</p>
-
-<p>
-  <strong>order tax:</strong>
-  <%= @order.tax %>
-</p>
-
-<p>
-  <strong>order shipping:</strong>
-  <%= @order.shipping %>
-</p>
-
-<p>
-  <strong>order total:</strong>
-  <%= @order.total %>
-</p>
-
-
-
-<p>
-
-  <% @order_items.each do |order_item| %>
-  <strong>product name:</strong><%= order_item.product.name %><br>
-  <strong>product price:</strong><%= order_item.product.price %><br>
-  <%= order_item.unit_price %>
-  <%= order_item.quantity %>
-  <% end %>
-
-
-
-
-
-</p>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>product name</th>
+          <th>product price</th>
+          <th>quantity</th>
+          <th>total price</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @order_items.each do |order_item| %>
+        <tr>
+          <td><%= order_item.product.name %></td>
+          <td><%= order_item.unit_price %></td>
+          <td><%= order_item.quantity %></td>
+          <td><%= order_item.total_price %></td>
+        </tr>
+          <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <%= link_to 'Back', charges_path %>
