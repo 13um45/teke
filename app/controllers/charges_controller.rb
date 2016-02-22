@@ -1,7 +1,7 @@
 class ChargesController < ApplicationController
 before_action :require_logged_in, only: [:index, :show]
   def index
-    @charges = Charge.all
+    @charges = Charge.order(:created_at).reverse
   end
 
   def show
