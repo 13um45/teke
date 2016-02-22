@@ -12,7 +12,7 @@
 
       <% @charges.each do |charge| %>
     <tbody>
-        <% if charge.order_id == nil %>
+        <% if charge.tracking == nil %>
         <tr class="menu table-danger" data-link="<%= charge_path(charge) %>">
           <td><%= charge.name %></td>
           <td><%= charge.id %></td>

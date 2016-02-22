@@ -19,7 +19,7 @@
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="test"
-          data-amount="<%= current_order.subtotal * 100 %>"
+          data-amount="<%= current_order.subtotal %>"
           data-locale="auto"
           data-billing-address="true"
           data-shipping-address="true"></script>

@@ -8,6 +8,16 @@ class OrderItem < ActiveRecord::Base
 
   before_save :finalize
 
+  def formatted_unit_price
+    price_in_dollars = unit_price.to_f / 100
+    format("%.2f", price_in_dollars)
+  end
+
+  def formatted_total_price
+    price_in_dollars = total_price.to_f / 100
+    format("%.2f", price_in_dollars)
+  end
+
   def unit_price
     if persisted?
       self[:unit_price]

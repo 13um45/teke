@@ -6,4 +6,9 @@ class Product < ActiveRecord::Base
   validates :price, :quantity, numericality: { only_integer: true }
 
   default_scope { where(active: true) }
+
+  def formatted_price
+    price_in_dollars = price.to_f / 100
+    format("%.2f", price_in_dollars)
+  end
 end

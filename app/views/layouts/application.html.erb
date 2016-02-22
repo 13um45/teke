@@ -29,7 +29,7 @@
         <a class="nav-link" href="<%= root_path %>">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<%= charges_path %>">Charges</a>
+        <a class="nav-link" href="<%= charges_path %>">Orders</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<%= new_product_path %>">Create New Product</a>
@@ -39,7 +39,7 @@
       <li class="nav-item">
         <a href="<%= charges_path %>">
           <h4>
-            <span class="label label-danger"><%= Charge.where(order_id: nil).count %></span>
+            <span class="label label-danger"><%= Charge.where(tracking: nil).count %></span>
           </h4>
         </a>
       </li>

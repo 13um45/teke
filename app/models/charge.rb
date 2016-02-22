@@ -6,7 +6,7 @@ class Charge < ActiveRecord::Base
                                        card: card_token
 
     Stripe::Charge.create customer: customer.id,
-                          amount: order.subtotal * 100,
+                          amount: order.subtotal,
                           description: order.id,
                           currency: 'usd'
 

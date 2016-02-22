@@ -28,6 +28,16 @@ before_action :require_logged_in, only: [:index, :show]
     render :new
   end
 
+  def update
+    @charge = Charge.find(params[:id])
+
+    if @charge.update(charge_params)
+      redirect_to @charge
+    else
+      render 'edit'
+    end
+  end
+
 private
 
   def stripe_params
@@ -35,6 +45,6 @@ private
   end
 
   def charge_params
-        params.require(:charge).permit(:order_id)
+        params.require(:charge).permit(:order_id, :tracking)
   end
 end
