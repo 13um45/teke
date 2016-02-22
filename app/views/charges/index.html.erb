@@ -12,12 +12,20 @@
 
       <% @charges.each do |charge| %>
     <tbody>
+        <% if charge.order_id == nil %>
+        <tr class="menu table-danger" data-link="<%= charge_path(charge) %>">
+          <td><%= charge.name %></td>
+          <td><%= charge.id %></td>
+          <td><%= charge.created_at.strftime("%Y-%m-%d %T") %></td>
+        </tr>
+        <% else %>
         <tr class="menu" data-link="<%= charge_path(charge) %>">
           <td><%= charge.name %></td>
           <td><%= charge.id %></td>
           <td><%= charge.created_at.strftime("%Y-%m-%d %T") %></td>
         </tr>
     </tbody>
+    <% end %>
       <% end %>
   </table>
 </div>

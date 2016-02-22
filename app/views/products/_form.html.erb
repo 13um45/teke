@@ -1,43 +1,69 @@
 <%= form_for @product do |f| %>
 
   <% if @product.errors.any? %>
-    <div id="error_explanation">
-      <h2>
+  <div class="container">
+    <div id="error_explanation" class="alert alert-danger alert-dismissible fade in" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <p>
+        <strong>
         <%= pluralize(@product.errors.count, "error") %> prohibited
         this article from being saved:
-      </h2>
+        </strong>
+      </p>
       <ul>
         <% @product.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>
     </div>
+    </div>
   <% end %>
+<div class="container">
+  <div class="form-group row">
+    <div class="col-md-5">
+      <%= f.text_field :name, class: "form-control",
+        placeholder: "name" %>
+    </div>
+  </div>
 
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
+  <div class="form-group row">
+    <div class="col-md-5">
+    <%= f.text_area :description, class: "form-control",
+    placeholder: "description", rows: "5" %>
+  </div>
+</div>
 
-  <p>
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </p>
+<div class="form-group row">
+  <div class="col-md-2">
+  <form class="form-inline">
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">$</div>
+          <%= f.number_field :price, class: "form-control",
+            placeholder: "price" %>
+        <div class="input-group-addon">.00</div>
+      </div>
+    </div>
+  </form>
+</div>
+</div>
 
-  <p>
-    <%= f.label :price %><br>
-    <%= f.number_field :price %>
-  </p>
 
-  <p>
-    <%= f.label :quantity %><br>
-    <%= f.number_field :quantity %>
-  </p>
+  <div class="form-group row">
+    <div class="col-md-2">
+    <%= f.number_field :quantity, class: "form-control",
+    placeholder: "quantity" %>
+  </div>
+  </div>
 
   <%= f.hidden_field :active, value: true %>
 
-  <p>
-    <%= f.submit %>
-  </p>
-
+  <div class="row">
+    <div class="col-md-4">
+    <%= f.submit "submit", class: "btn btn-primary-outline" %>
+  </div>
+  </div>
+</div>
 <% end %>
