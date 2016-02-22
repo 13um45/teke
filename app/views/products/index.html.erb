@@ -6,6 +6,9 @@
     </div>
   </div>
 
+  <% if @products == nil %>
+  <p>no products</p>
+  <% else %>
   <div class="row">
     <% @products.each do |product| %>
       <% if product.image == nil %>
@@ -22,5 +25,5 @@
       <% end %>
     <% end %>
   </div>
-
+<% end %>
 </div>
