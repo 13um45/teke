@@ -15,14 +15,12 @@ before_action :require_logged_in, only: [:index, :show]
   end
 
   def create
-    @charge = Charge.new charge_params.
-      merge(email: stripe_params["stripeEmail"],
-        card_token: stripe_params["stripeToken"])
+    @charge = Charge.new charge_params
     raise "Please, check charge errors" unless @charge.valid?
     @charge.process_payment
     @charge.save
     session[:order_id] = nil
-    redirect_to products_path, notice: 'Registration was successfully created.'
+    redirect_to products_path, notice: 'Order was successfully placed.'
   rescue Stripe::CardError => e
     flash[:error] = e.message
     render :new
@@ -32,9 +30,9 @@ before_action :require_logged_in, only: [:index, :show]
     @charge = Charge.find(params[:id])
 
     if @charge.update(charge_params)
-      redirect_to @charge
+      redirect_to @charge, notice: 'Tracking number was added.'
     else
-      render 'edit'
+      redirect_to @charge, notice: 'Tracking number was not added.'
     end
   end
 
@@ -45,6 +43,6 @@ private
   end
 
   def charge_params
-        params.require(:charge).permit(:order_id, :tracking)
+        params.require(:charge).permit(:order_id, :tracking, :email, :card_token)
   end
 end

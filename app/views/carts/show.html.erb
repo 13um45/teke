@@ -1,4 +1,7 @@
 <div class="shopping-cart">
   <%= render "shopping_cart" %>
+  <% if @order_items.size == 0 %>
+  <% else %>
   <%= render "charges/form" %>
+  <% end %>
 </div>

@@ -39,10 +39,6 @@
           <%= number_to_currency @order.formatted_subtotal %>
         </p>
         <p>
-          <strong>tax:</strong>
-          <%= number_to_currency @order.formatted_tax %>
-        </p>
-        <p>
           <strong>shipping:</strong>
           <%= number_to_currency @order.formatted_shipping %>
         </p>
@@ -67,9 +63,9 @@
       <% @order_items.each do |order_item| %>
         <tr>
           <td><%= order_item.product.name %></td>
-          <td><%= order_item.formatted_unit_price %></td>
+          <td>$<%= order_item.formatted_unit_price %></td>
           <td><%= order_item.quantity %></td>
-          <td><%= order_item.formatted_total_price %></td>
+          <td>$<%= order_item.formatted_total_price %></td>
         </tr>
           <% end %>
       </tbody>
@@ -77,6 +73,7 @@
 
     <%if @charge.tracking == nil %>
      <%= form_for @charge do |f| %>
+
     <div class="row">
       <div class="col-md-3">
         <%= f.text_field :tracking, class: "form-control",

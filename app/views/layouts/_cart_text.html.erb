@@ -1,1 +1,1 @@
-<%= link_to "#{current_order.order_items.size} Items in Cart ( #{number_to_currency current_order.formatted_subtotal} )", cart_path, class: "btn btn-link" %>
+<%= link_to "#{current_order.order_items.collect { |oi| oi.quantity }.sum} Items in Cart ( #{number_to_currency current_order.formatted_total} )", cart_path, class: "btn nav-link" %>

@@ -15,13 +15,45 @@
   <% end %>
 
   <%= f.hidden_field :order_id, value: current_order.id %>
+  <%= f.hidden_field :email %>
+  <%= f.hidden_field :card_token %>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="test"
-          data-amount="<%= current_order.subtotal %>"
-          data-locale="auto"
-          data-billing-address="true"
-          data-shipping-address="true"></script>
+
+  <script src="https://checkout.stripe.com/checkout.js"></script>
+
+<button class="btn btn-primary" id="customButton">Checkout</button>
+
+<script>
+  var handler = StripeCheckout.configure({
+    key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+    image: '',
+    locale: 'auto',
+    token: function(token) {
+       $("[name='charge[email]").val(token.email);
+        $("[name='charge[card_token]").val(token.id);
+        $("#new_charge").submit();
+      // Use the token to create the charge with a server-side script.
+      // You can access the token ID with `token.id`
+    }
+  });
+
+  $('#customButton').on('click', function(e) {
+    // Open Checkout with further options
+    handler.open({
+      name: 'Marketplace',
+      description: 'testing',
+      amount: <%= current_order.total %>,
+      billingAdress: "true",
+      shippingAddress: "true"
+    });
+    e.preventDefault();
+  });
+
+  // Close Checkout on page navigation
+  $(window).on('popstate', function() {
+    handler.close();
+  });
+</script>
+
 <% end %>
 
