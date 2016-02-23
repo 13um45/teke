@@ -34,7 +34,7 @@
         <li class="nav-item">
           <a class="nav-link" href="<%= new_product_path %>">Create New Product</a>
         </li>
-          <% if Charge.where(order_id: nil).count == 0 %>
+          <% if Charge.where(tracking: nil).count == 0 %>
           <% else %>
         <li class="nav-item">
           <a href="<%= charges_path %>">
