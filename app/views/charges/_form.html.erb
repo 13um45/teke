@@ -24,6 +24,7 @@
 <button class="btn btn-primary" id="customButton">Checkout</button>
 
 <script>
+$(document).one('ready page:load', function() {
   var handler = StripeCheckout.configure({
     key: '<%= Rails.configuration.stripe[:publishable_key] %>',
     image: '',
@@ -52,6 +53,7 @@
   // Close Checkout on page navigation
   $(window).on('popstate', function() {
     handler.close();
+  });
   });
 </script>
 
