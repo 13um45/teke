@@ -20,6 +20,7 @@ before_action :require_logged_in, only: [:index, :show]
     @charge.process_payment
     @charge.save
     session[:order_id] = nil
+    ChargeNotifier.send_order_email(@charge).deliver_now
     redirect_to products_path, notice: 'Order was successfully placed.'
   rescue Stripe::CardError => e
     flash[:error] = e.message

@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+  </head>
+  <body>
+   <br>
+<div class="container">
+  <div class="card-group">
+    <div class="card">
+      <div class="card-header">
+        Customer Details
+      </div>
+      <div class="card-block">
+        <p class="card-text">
+          <strong><%= @charge.name %></strong><br>
+          <%= @charge.address1 %>
+          <%= @charge.address2 %><br>
+          <%= @charge.city %>,
+          <%= @charge.state %>
+          <%= @charge.zip %><br>
+          <% if @charge.country == "United States" %>
+          <% else %>
+            <%= @charge.country %><br>
+          <% end %>
+        </p>
+        <p class="card-text">
+          <strong>email:</strong>
+          <%= @charge.email %>
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        Order Summary
+      </div>
+      <div class="card-block">
+        <p class="card-text">
+          <strong>date:</strong>
+          <%= @charge.created_at.strftime("%Y-%m-%d") %>
+        </p>
+        <p class="card-text">
+          <strong>subtotal:</strong>
+          <%= number_to_currency @order.formatted_subtotal %>
+        </p>
+        <p>
+          <strong>shipping:</strong>
+          <%= number_to_currency @order.formatted_shipping %>
+        </p>
+        <p>
+          <strong>total:</strong>
+          <%= number_to_currency @order.formatted_total %>
+        </p>
+      </div>
+    </div>
+   </div>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>product name</th>
+          <th>product price</th>
+          <th>quantity</th>
+          <th>total price</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @order_items.each do |order_item| %>
+        <tr>
+          <td><%= order_item.product.name %></td>
+          <td>$<%= order_item.formatted_unit_price %></td>
+          <td><%= order_item.quantity %></td>
+          <td>$<%= order_item.formatted_total_price %></td>
+        </tr>
+          <% end %>
+      </tbody>
+    </table>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -35,6 +35,7 @@ gem 'stripe'
 
 gem 'better_errors'
 
+
 ruby '2.2.3'
 
 # Use Unicorn as the app server
