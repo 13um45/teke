@@ -15,13 +15,15 @@ before_action :require_logged_in, only: [:index, :show]
   end
 
   def create
+    @order_items = current_order.order_items
     @charge = Charge.new charge_params
     raise "Please, check charge errors" unless @charge.valid?
     @charge.process_payment
     @charge.save
     session[:order_id] = nil
     ChargeNotifier.send_order_email(@charge).deliver_now
-    redirect_to products_path, notice: 'Order was successfully placed.'
+    redirect_to products_path, notice: 'Order was successfully placed. A confirmation email
+    will be sent shortly.'
   rescue Stripe::CardError => e
     flash[:error] = e.message
     render :new
@@ -31,6 +33,7 @@ before_action :require_logged_in, only: [:index, :show]
     @charge = Charge.find(params[:id])
 
     if @charge.update(charge_params)
+      ChargeNotifier.send_tracking_email(@charge).deliver_now
       redirect_to @charge, notice: 'Tracking number was added.'
     else
       redirect_to @charge, notice: 'Tracking number was not added.'

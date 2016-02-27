@@ -5,7 +5,7 @@ class OrderItem < ActiveRecord::Base
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validate :product_present
   validate :order_present
-
+  before_create :uniq_product
   before_save :finalize
 
   def formatted_unit_price
@@ -43,8 +43,18 @@ private
     end
   end
 
+  def uniq_product
+    if order.order_items.where("(product_id) = ?", self.product_id).first
+      self.quantity = order.order_items.where("(product_id) = ?", self.product_id).first.quantity + self.quantity
+      order.order_items.where("(product_id) = ?", self.product_id).first.destroy!
+    else
+    end
+
+  end
+
   def finalize
     self[:unit_price] = unit_price
     self[:total_price] = quantity * self[:unit_price]
   end
+
 end

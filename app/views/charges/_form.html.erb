@@ -1,3 +1,5 @@
+<% if @order_items.size == 0 %>
+  <% else %>
 <%= form_for @charge do |f| %>
 
   <% if @charge.errors.any? %>
@@ -53,5 +55,6 @@
   });
 </script>
 
+<% end %>
 <% end %>
 
