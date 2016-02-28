@@ -8,11 +8,12 @@ Rails.application.routes.draw do
 
   get 'carts/show'
 
-  root to: 'products#index'
+  root to: 'welcome#index'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
+  resource :welcome
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
   resources :products

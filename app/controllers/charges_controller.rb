@@ -19,7 +19,7 @@ before_action :require_logged_in, only: [:index, :show]
     @charge = Charge.new charge_params
     raise "Please, check charge errors" unless @charge.valid?
     @charge.process_payment
-    @charge.save
+    @charge.save!
     session[:order_id] = nil
     ChargeNotifier.send_order_email(@charge).deliver_now
     redirect_to products_path, notice: 'Order was successfully placed. A confirmation email

@@ -1,0 +1,8 @@
+.jumbotron {
+background-image: url(http://i.giphy.com/xTiTnHLbEuUDuBFiUw.gif);
+background-size: 100%;
+}
+
+.bgimage-inside {
+padding-top: 75%; /* this is actually (426/1140)*100 */
+}
