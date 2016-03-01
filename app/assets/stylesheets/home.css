@@ -1,0 +1,21 @@
+#hgif1 {
+background-image: url(http://i.giphy.com/3ornjSRFHJVXF6BF8k.gif);
+background-size: 100%;
+}
+
+.bgimage-inside {
+padding-top: 75%; /* this is actually (426/1140)*100 */
+}
+
+#hgif2 {
+background-image: url(http://i.giphy.com/xT9DPwSOBxkgGsyVUs.gif);
+background-size: 100%;
+}
+
+.bgimage-inside {
+padding-top: 75%; /* this is actually (426/1140)*100 */
+}
+
+.giftron {
+  cursor: pointer;
+}

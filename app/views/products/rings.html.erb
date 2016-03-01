@@ -1,0 +1,23 @@
+<br>
+<div class="container">
+  <% if @rings == nil %>
+  <p>no rings</p>
+  <% else %>
+  <div class="row">
+    <% @rings.each do |ring| %>
+      <% if ring.image == nil %>
+        <p>no image </p>
+      <% else %>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <%= link_to ring do %>
+        <%= image_tag ring.image.image1.url ,
+          class: "img-fluid" %>
+        <%= ring.name %>
+      <% end %>
+      <p>$<%= ring.formatted_price %></p>
+    </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+</div>

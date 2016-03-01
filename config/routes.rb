@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'home/index'
+
   get 'order_items/create'
 
   get 'order_items/update'
@@ -8,11 +10,17 @@ Rails.application.routes.draw do
 
   get 'carts/show'
 
+  get 'products/rings'
+  get 'products/earrings'
+  get 'products/necklaces'
+  get 'products/bracelets'
+
   root to: 'welcome#index'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
+  resource :home
   resource :welcome
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]

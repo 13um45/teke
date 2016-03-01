@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 
-  before_action :require_logged_in, except: [:index, :show]
+  before_action :require_logged_in, except: [:index, :show, :rings,
+    :earrings, :necklaces, :bracelets]
 
   def index
     @products = Product.all
@@ -18,9 +19,22 @@ class ProductsController < ApplicationController
     @p_newest = Product.order(:created_at).reverse
 
     @order_item = current_order.order_items.new
+  end
 
+  def rings
+    @rings  = Product.rings
+  end
 
+  def earrings
+    @earrings  = Product.earrings
+  end
 
+  def necklaces
+    @necklaces  = Product.necklaces
+  end
+
+  def bracelets
+    @bracelets  = Product.bracelets
   end
 
   def show
@@ -66,6 +80,7 @@ class ProductsController < ApplicationController
 
 private
   def product_params
-    params.require(:product).permit(:name, :description, :price, :quantity, :active)
+    params.require(:product).permit(:name, :description, :price, :quantity, :active,
+      :ring, :earring, :necklace, :bracelet)
   end
 end

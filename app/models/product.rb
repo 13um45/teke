@@ -7,6 +7,11 @@ class Product < ActiveRecord::Base
 
   default_scope { where(active: true) }
 
+  scope :rings, -> { where(ring: true) }
+  scope :earrings, -> { where(earring: true) }
+  scope :necklaces, -> { where(necklace: true) }
+  scope :bracelets, -> { where(bracelet: true) }
+
   def formatted_price
     price_in_dollars = price.to_f / 100
     format("%.2f", price_in_dollars)

@@ -1,0 +1,23 @@
+<br>
+<div class="container">
+  <% if @necklaces == nil %>
+  <p>no necklaces</p>
+  <% else %>
+  <div class="row">
+    <% @necklaces.each do |necklace| %>
+      <% if necklace.image == nil %>
+        <p>no image </p>
+      <% else %>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <%= link_to necklace do %>
+        <%= image_tag necklace.image.image1.url ,
+          class: "img-fluid" %>
+        <%= necklace.name %>
+      <% end %>
+      <p>$<%= necklace.formatted_price %></p>
+    </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+</div>

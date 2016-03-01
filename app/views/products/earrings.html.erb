@@ -1,0 +1,23 @@
+<br>
+<div class="container">
+  <% if @earrings == nil %>
+  <p>no earrings</p>
+  <% else %>
+  <div class="row">
+    <% @earrings.each do |earring| %>
+      <% if earring.image == nil %>
+        <p>no image </p>
+      <% else %>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <%= link_to earring do %>
+        <%= image_tag earring.image.image1.url ,
+          class: "img-fluid" %>
+        <%= earring.name %>
+      <% end %>
+      <p>$<%= earring.formatted_price %></p>
+    </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+</div>

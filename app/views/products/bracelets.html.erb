@@ -1,0 +1,23 @@
+<br>
+<div class="container">
+  <% if @bracelets == nil %>
+  <p>no bracelets</p>
+  <% else %>
+  <div class="row">
+    <% @bracelets.each do |bracelet| %>
+      <% if bracelet.image == nil %>
+        <p>no image </p>
+      <% else %>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <%= link_to bracelet do %>
+        <%= image_tag bracelet.image.image1.url ,
+          class: "img-fluid" %>
+        <%= bracelet.name %>
+      <% end %>
+      <p>$<%= bracelet.formatted_price %></p>
+    </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+</div>
