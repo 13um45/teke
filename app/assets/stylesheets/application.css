@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+.btn.sharp {
+  border-radius:0;
+ border: 2px solid #CCCCCC;
+}
