@@ -1,8 +1,10 @@
 <% if !@order_item.nil? && @order_item.errors.any? %>
   <div class="alert alert-danger">
     <ul>
-    <% @order_item.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+      <% @order_item.errors.full_messages.each do |msg| %>
+      <li>
+        <%= msg %>
+      </li>
     <% end %>
     </ul>
   </div>
@@ -16,5 +18,6 @@
     <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
   <% end %>
 <% end %>
-<h4 class="text-right">Total Price: <span style="color: green"><%= number_to_currency current_order.formatted_total %>
+<h4 class="text-right">Total Price: <%= number_to_currency current_order.formatted_total %>
         </h4>
+

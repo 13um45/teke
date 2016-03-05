@@ -1,54 +1,41 @@
+<br>
 <div class="container">
   <div class="row">
    <% if @product.image == nil %>
     <%= link_to "add images", new_image_path(product_id: @product.id) %>
-      <% else %>
-    <div class="col-md-6 col-md-offset-2 mainimg">
-     <div class="bss-slides num1">
+  <% else %>
+    <div class="col-md-5 col-md-offset-2 mainimg">
+      <div class="bss-slides num1">
         <figure class="image" >
             <img src="<%= @images.image1.url %>" width="100%" />
         </figure>
-         <figure class="image" >
+        <figure class="image" >
             <img src="<%= @images.image2.url %>" width="100%" />
         </figure>
-         <figure class="image" >
+        <figure class="image" >
             <img src="<%= @images.image3.url %>" width="100%" />
         </figure>
-         <figure class="image" >
+        <figure class="image" >
             <img src="<%= @images.image4.url %>" width="100%" />
         </figure>
       </div>
     </div>
     <div class="col-md-4">
-      <p><%= @product.name %></p>
-
-      <h3>description</h3>
-      <p><%= @product.description %></p>
-
-      <h3>price</h3>
-      <p><%= @product.formatted_price %></p>
-
-      <h3>quantity</h3>
-      <p><%= @product.quantity %></p>
-
-
-      </div>
-  </div>
-    <% end %>
-
-     <div class="col-xs-4">
-
-      <%= form_for @order_item, remote: true do |f| %>
-      <h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency @product.formatted_price %></span></h4>
-        <div class="input-group">
-          <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
-          <div class="input-group-btn">
-            <%= f.hidden_field :product_id, value: @product.id %>
-            <%= f.submit "Add to Cart", class: "btn btn-primary" %>
-          </div>
-        </div>
+      <h5><%= @product.name %></h5>
+      <br>
+      <h5>$<%= @product.formatted_price %></h5>
+      <p><%= simple_format(@product.description) %></p>
       <% end %>
+      <br>
+      <%= form_for @order_item, remote: true do |f| %>
+        <%= f.hidden_field :quantity, value: 1 %>
+        <%= f.hidden_field :product_id, value: @product.id %>
+        <%= f.submit "Add to Cart", class: "btn btn-secondary btn-block" %>
     </div>
+  </div>
+  <br>
+  <br>
+    <% end %>
 </div>
 
 <script>
