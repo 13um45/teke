@@ -1,6 +1,17 @@
-<br>
 <div class="container">
   <div class="row">
+    <div class="col-xs-12">
+      <a href="/home/index">home</a> /
+      <% if @product.earring == true %>
+        <a href="/products/earrings">earrings</a> /
+      <% else %>
+        <a href="/products/necklaces">necklaces</a> /
+      <% end %>
+        <%= @product.name %>
+    </div>
+  </div>
+  <div class="row">
+  <br>
    <% if @product.image == nil %>
     <%= link_to "add images", new_image_path(product_id: @product.id) %>
   <% else %>
@@ -30,7 +41,7 @@
       <%= form_for @order_item, remote: true do |f| %>
         <%= f.hidden_field :quantity, value: 1 %>
         <%= f.hidden_field :product_id, value: @product.id %>
-        <%= f.submit "Add to Cart", class: "btn btn-secondary btn-block sharp" %>
+        <%= f.submit "Add to Cart", class: "btn btn-secondary btn-block sharp blk" %>
         <br>
         <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
           <a class="a2a_button_facebook"></a>

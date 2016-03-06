@@ -37,3 +37,17 @@ a:hover {
 .form-control {
   border-radius:0 !important;
 }
+
+.btn-secondary.blk {
+  color: #ffffff !important;
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+.btn-secondary.blk:hover,
+.btn-secondary.blk:focus,
+.btn-secondary.blk:active {
+  color: #ffffff !important;
+  background-color: #333333 !important;
+  border-color: #000000 !important;
+}
