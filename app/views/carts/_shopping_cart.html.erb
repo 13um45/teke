@@ -21,39 +21,39 @@
 <% if @order_items.size == 0 %>
 <% else %>
   <div class="row">
-    <div class="col-md-offset-7 col-md-1">
-      <h5>
+    <div class="col-md-offset-7 col-md-1 col-xs-6">
+      <h6>
         subtotal:
-      </h5>
+      </h6>
     </div>
-    <div class="col-md-offset-1 col-md-1">
-      <h5 class="pull-xs-right">
+    <div class="col-md-offset-1 col-md-1 col-xs-6">
+      <h6 class="pull-xs-right">
         <%= number_to_currency current_order.formatted_subtotal %>
-      </h5>
+      </h6>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-offset-7 col-md-1">
-      <h5>
+    <div class="col-md-offset-7 col-md-1 col-xs-6">
+      <h6>
         shipping:
-      </h5>
+      </h6>
     </div>
-    <div class="col-md-offset-1 col-md-1">
-      <h5 class="pull-xs-right">
+    <div class="col-md-offset-1 col-md-1 col-xs-6">
+      <h6 class="pull-xs-right">
         $6.80
-      </h5>
+      </h6>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-offset-7 col-md-1">
-      <h5>
+    <div class="col-md-offset-7 col-md-1 col-xs-6">
+      <h6>
         total:
-      </h5>
+      </h6>
     </div>
-    <div class="col-md-offset-1 col-md-1">
-      <h5 class="pull-xs-right">
+    <div class="col-md-offset-1 col-md-1 col-xs-6">
+      <h6 class="pull-xs-right">
         <%= number_to_currency current_order.formatted_total %>
-      </h5>
+      </h6>
     </div>
   </div>
   <% end %>
