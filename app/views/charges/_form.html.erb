@@ -21,9 +21,12 @@
   <%= f.hidden_field :card_token %>
 
 
-
-
-<button class="btn btn-secondary sharp" id="customButton">Checkout</button>
+<div class="row">
+  <br>
+  <div class="col-md-offset-8 col-md-2">
+    <button class="btn btn-secondary sharp pull-xs-right" id="customButton">Checkout</button>
+  </div>
+</div>
 
 <script>
   var handler = StripeCheckout.configure({

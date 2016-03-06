@@ -18,6 +18,40 @@
     <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
   <% end %>
 <% end %>
-<h4 class="text-right">Total Price: <%= number_to_currency current_order.formatted_total %>
-        </h4>
 
+<div class="row">
+  <div class="col-md-offset-7 col-md-1">
+    <h5>
+      subtotal:
+    </h5>
+  </div>
+  <div class="col-md-offset-1 col-md-1">
+    <h5 class="pull-xs-right">
+      <%= number_to_currency current_order.formatted_subtotal %>
+    </h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-offset-7 col-md-1">
+    <h5>
+      shipping:
+    </h5>
+  </div>
+  <div class="col-md-offset-1 col-md-1">
+    <h5 class="pull-xs-right">
+      $6.80
+    </h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-offset-7 col-md-1">
+    <h5>
+      total:
+    </h5>
+  </div>
+  <div class="col-md-offset-1 col-md-1">
+    <h5 class="pull-xs-right">
+      <%= number_to_currency current_order.formatted_total %>
+    </h5>
+  </div>
+</div>

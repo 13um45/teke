@@ -14,7 +14,26 @@
  *= require_self
  */
 
+ .jumbotron {
+    border-radius:0 !important;
+ }
+
 .btn.sharp {
   border-radius:0;
- border: 2px solid #CCCCCC;
+}
+
+a {
+    color: #98999A !important;
+}
+
+a:hover {
+    color: #000000 !important;
+}
+
+.btn-secondary.del {
+  color: #000000 !important;
+}
+
+.form-control {
+  border-radius:0 !important;
 }

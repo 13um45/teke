@@ -52,7 +52,7 @@
     </div>
   </nav>
 <% else %>
-  <nav class="navbar navbar-full navbar-dark bg-inverse">
+  <nav class="navbar navbar-full transparent">
       <ul class="nav navbar-nav">
         <li class="nav-item pull-xs-right cart-text">
             <%= render 'layouts/cart_text' %>
@@ -62,25 +62,16 @@
     &#9776;
     </button>
     <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
-      <a class="navbar-brand" href="<%= root_path %>">TEKE</a>
+      <a class="navbar-brand" href="/home/index">home</a>
       <ul class="nav navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="/home/index">home <span class="sr-only">(current)</span></a>
-        </li>
-         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-              aria-expanded="false">shop</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="/products/necklaces">necklaces</a>
-              <a class="dropdown-item" href="/products/bracelets">bracelets</a>
-              <a class="dropdown-item" href="/products/earrings">earrings</a>
-              <a class="dropdown-item" href="/products/rings">rings</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="<%= products_path %>">show all</a>
-            </div>
-          </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<%= products_path %>">products</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">shop</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/products/necklaces">necklaces</a>
+            <a class="dropdown-item" href="/products/earrings">earrings</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="<%= products_path %>">All</a>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">about</a>
