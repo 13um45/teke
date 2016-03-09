@@ -1,1 +1,17 @@
-testing!!
+Name: <%= @charge.name %>
+Address Line 1: <%= @charge.address1 %>
+Address Line 2: <%= @charge.address2 %>
+City: <%= @charge.city %>
+State: <%= @charge.state %>
+Zip: <%= @charge.zip %>
+
+
+Email: <%= @charge.email %>
+Date: <%= @charge.created_at.strftime("%Y-%m-%d") %>
+Subtotal: <%= number_to_currency @order.formatted_subtotal %>
+Shipping: <%= number_to_currency @order.formatted_shipping %>
+Total: <%= number_to_currency @order.formatted_total %>
+
+
+Thank you for your purchase. When your order ships you will receive
+another email with your tracking info.

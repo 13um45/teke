@@ -2,10 +2,38 @@
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
   </head>
   <body>
-  <h4>this is your tracking number. click the link</h4>
- <a href="https://tools.usps.com/go/TrackConfirmAction.action?tRef=fullpage&tLc=1&text28777=&tLabels=+<%= @charge.tracking %>"><%= @charge.tracking %></a>
+    <div class="container">
+      <br>
+      <div class="jumbotron">
+        <h3 class="text-xs-center">Your order has shipped!</h3>
+        <h5 class="text-xs-center">Here is your tracking info.</h5>
+        <br>
+        <p class="text-xs-center"> Please click this
+          <a href="https://tools.usps.com/go/TrackConfirmAction.action?tRef=fullpage&tLc=1&text28777=&tLabels=+<%= @charge.tracking %>">link</a>
+          which will take you to USPS tracking.</p>
+        <p class="text-xs-center">
+          Link doesn't work?
+        </p>
+        <p class="text-xs-center">
+          Copy your tracking number: <%= @charge.tracking %><br>
+          Click this USPS Tracking
+          <a href="https://tools.usps.com/go/TrackConfirmAction_input">
+           link
+          </a>
+          and paste the tracking number in the tracking search field.
+        </p>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
   </body>
 </html>
 

@@ -6,7 +6,7 @@ class ChargeNotifier < ApplicationMailer
     @order = @charge.order
     @order_items = @order.order_items
     mail( :to => @charge.email,
-    :subject => 'Thanks for your purchase!' )
+    :subject => 'Your Order' )
   end
 
    def send_tracking_email(charge)
@@ -14,6 +14,6 @@ class ChargeNotifier < ApplicationMailer
     @order = @charge.order
     @order_items = @order.order_items
     mail( :to => @charge.email,
-    :subject => 'Tracking Information' )
+    :subject => 'Tracking Information For Your Order' )
   end
 end
