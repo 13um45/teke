@@ -2,11 +2,16 @@ class OrderItem < ActiveRecord::Base
   belongs_to :product
   belongs_to :order
 
-  validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :quantity, presence: true, numericality: { only_integer: true,
+    :greater_than => 0, :less_than_or_equal_to => :product_qty }
   validate :product_present
   validate :order_present
   before_create :uniq_product
   before_save :finalize
+
+  def product_qty
+    product.quantity
+  end
 
   def formatted_unit_price
     price_in_dollars = unit_price.to_f / 100
@@ -44,12 +49,16 @@ private
   end
 
   def uniq_product
-    if order.order_items.where("(product_id) = ?", self.product_id).first
-      self.quantity = order.order_items.where("(product_id) = ?", self.product_id).first.quantity + self.quantity
-      order.order_items.where("(product_id) = ?", self.product_id).first.destroy!
+     oi = order.order_items.where("(product_id) = ?", self.product_id).first
+    if oi
+      self.quantity = oi.quantity + self.quantity
+        if self.quantity > product_qty
+           self.quantity = product_qty
+        else
+        end
+      oi.destroy!
     else
     end
-
   end
 
   def finalize

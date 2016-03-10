@@ -24,5 +24,4 @@ class Charge < ActiveRecord::Base
     self.country = c.address_country
     self.customer_id = customer.id
   end
-
 end

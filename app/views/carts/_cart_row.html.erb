@@ -1,22 +1,27 @@
 <div class="well">
   <div class="row">
-  <%= form_for order_item, remote: true do |f| %>
-    <div class="col-xs-8 col-md-3 col-md-offset-1 col-xs-12">
-      <h7><%= link_to product.name, product %></h7>
+    <%= form_for order_item, remote: true do |f| %>
+    <div class="col-md-2 col-md-offset-0 col-xs-offset-3 col-xs-6">
+         <%= link_to product do %>
+          <%= image_tag product.image.image1.url ,
+          class: "img-fluid" %>
     </div>
-    <div class="col-md-1 col-xs-2">
+    <div class="col-md-2 col-xs-12 text-xs-center text-md-left">
+      <h7 class=""><%= product.name %></h7>
+      <% end %>
+    </div>
+    <div class="col-md-2 col-xs-2">
       <h7>
         <%= number_to_currency order_item.formatted_unit_price %>
       </h7>
     </div>
     <div class="col-md-3 col-xs-7">
       <div class="input-group">
-        <%= f.number_field :quantity, value: order_item.quantity.to_i, class: " form-control form-control-sm", min: 1 %>
-        <%= f.hidden_field :product_id, value: product.id %>
+         <%= f.number_field :quantity, value: order_item.quantity.to_i, class: " form-control form-control-sm", min: 1, max: order_item.product.quantity %>
+          <%= f.hidden_field :product_id, value: product.id %>
         <div class="input-group-btn">
           <%= f.submit "update", class: "btn btn-sm btn-secondary sharp" %>
-          <%= link_to "remove", order_item, { data: {
-            confirm: "Are you sure you wish to delete the product #{order_item.product.name} from your cart?" },
+          <%= link_to "remove", order_item, {
                 method: :delete, remote: true, class: "btn btn-sm
                   btn-secondary sharp del" } %>
         </div>
@@ -28,6 +33,6 @@
       </h7>
     </div>
   </div>
-  <br>
-   <% end %>
+    <br>
+    <% end %>
 </div>
