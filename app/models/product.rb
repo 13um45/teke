@@ -11,6 +11,13 @@ class Product < ActiveRecord::Base
   scope :earrings, -> { where(earring: true) }
   scope :necklaces, -> { where(necklace: true) }
   scope :bracelets, -> { where(bracelet: true) }
+  scope :sold_out, -> { where(active: false) }
+  scope :active, -> {where("quantity >= ?", 1)}
+
+  def sold_out
+    self.quantity < 1
+  end
+
 
   def formatted_price
     price_in_dollars = price.to_f / 100

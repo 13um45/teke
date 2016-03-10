@@ -31,13 +31,16 @@
         </figure>
       </div>
     </div>
+    <% end %>
     <div class="col-md-4">
       <h5><%= @product.name %></h5>
       <br>
       <h5>$<%= @product.formatted_price %></h5>
       <p><%= simple_format(@product.description) %></p>
-      <% end %>
-      <br>
+      <% if @product.sold_out %>
+        <a href="#" class="btn btn-secondary btn-block disabled sharp" role="button">sold out</a>
+        <% else %>
+        <p><%= @product.quantity %> available</p>
       <%= form_for @order_item, remote: true do |f| %>
         <%= f.hidden_field :quantity, value: 1 %>
         <%= f.hidden_field :product_id, value: @product.id %>
@@ -56,6 +59,7 @@
     </div>
   </div>
   <br>
+    <% end %>
     <% end %>
 </div>
 <script>

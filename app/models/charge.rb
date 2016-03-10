@@ -5,6 +5,13 @@ class Charge < ActiveRecord::Base
   validates_presence_of :email
   validates_presence_of :card_token
 
+  def update_qty
+    self.order.order_items.each do |oi|
+      oi.product.quantity = oi.product.quantity - oi.quantity
+      oi.product.save!
+    end
+  end
+
     def process_payment
     customer = Stripe::Customer.create email: email,
                                        card: card_token
@@ -23,5 +30,6 @@ class Charge < ActiveRecord::Base
     self.zip = c.address_zip
     self.country = c.address_country
     self.customer_id = customer.id
+    update_qty
   end
 end

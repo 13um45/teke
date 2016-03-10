@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
     :earrings, :necklaces, :bracelets]
 
   def index
-    @products = Product.all
+    @products = Product.active
     #sorting by price
     #low-high
     @p_low_high = Product.order(:price)
@@ -22,19 +22,19 @@ class ProductsController < ApplicationController
   end
 
   def rings
-    @rings  = Product.rings
+    @rings  = Product.rings.active
   end
 
   def earrings
-    @earrings  = Product.earrings
+    @earrings  = Product.earrings.active
   end
 
   def necklaces
-    @necklaces  = Product.necklaces
+    @necklaces  = Product.necklaces.active
   end
 
   def bracelets
-    @bracelets  = Product.bracelets
+    @bracelets  = Product.bracelets.active
   end
 
   def show
