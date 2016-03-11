@@ -47,6 +47,7 @@ private
   end
 
   def charge_params
-        params.require(:charge).permit(:order_id, :tracking, :email, :card_token)
+        params.require(:charge).permit(:order_id, :tracking, :email, :card_token,
+          :name, :address1, :address2, :city, :state, :zip, :country)
   end
 end
