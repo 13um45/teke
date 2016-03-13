@@ -78,6 +78,13 @@
           <a class="nav-link" href="#">about</a>
         </li>
       </ul>
+      <div class="form-inline pull-xs-right">
+        <%= form_tag site_search_path do %>
+        <%= search_field_tag :term, "", class: "form-control form-control-sm",
+          remote: true %>
+        <%= submit_tag "search", class: "btn btn-secondary btn-sm sharp" %>
+        <% end %>
+      </div>
     </div>
   </nav>
 <% end %>

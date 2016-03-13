@@ -1,23 +1,25 @@
 <br>
 <div class="container">
-  <% if @products == nil %>
-  <p>no products</p>
-  <% else %>
-  <div class="row">
-    <% @products.each do |product| %>
-      <% if product.image == nil %>
-        <p>no image </p>
+  <div id="prindex">
+      <% if @products == nil %>
+      <p>no products</p>
       <% else %>
-    <div class="col-md-3 col-sm-6 col-xs-12">
-      <%= link_to product do %>
-        <%= image_tag product.image.image1.url ,
-          class: "img-fluid" %>
-        <%= product.name %>
-      <% end %>
-      <p>$<%= product.formatted_price %></p>
-    </div>
-      <% end %>
+      <div class="row">
+        <% @products.each do |product| %>
+          <% if product.image == nil %>
+            <p>no image </p>
+          <% else %>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <%= link_to product do %>
+            <%= image_tag product.image.image1.url ,
+              class: "img-fluid" %>
+            <%= product.name %>
+          <% end %>
+          <p>$<%= product.formatted_price %></p>
+        </div>
+          <% end %>
+        <% end %>
+      </div>
     <% end %>
   </div>
-<% end %>
 </div>

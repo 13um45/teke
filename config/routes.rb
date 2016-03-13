@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'site/search'
+  post 'site/search'
+
   get 'home/index'
 
   get 'order_items/create'
@@ -10,6 +13,7 @@ Rails.application.routes.draw do
 
   get 'carts/show'
 
+  get 'products/low_high'
   get 'products/rings'
   get 'products/earrings'
   get 'products/necklaces'

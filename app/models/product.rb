@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+  include SearchableByName
 
   has_many :order_items
   has_one :image, dependent: :destroy
@@ -13,6 +14,8 @@ class Product < ActiveRecord::Base
   scope :bracelets, -> { where(bracelet: true) }
   scope :sold_out, -> { where(active: false) }
   scope :active, -> {where("quantity >= ?", 1)}
+
+
 
   def sold_out
     self.quantity < 1

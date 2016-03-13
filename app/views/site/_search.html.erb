@@ -1,0 +1,30 @@
+  <br>
+  <div class="container">
+  <div class="row">
+    <div class="col-md-3">
+    <% if @results.nil? %>
+      <h6>Search for whatever you'd like.</h6>
+    <% elsif @results.empty? %>
+      <h6>Try your search again.</h6>
+    <% else %>
+      <h5>search results</h5>
+    </div>
+  </div>
+    <div class="row">
+      <% @results.each do |result| %>
+        <% if result.image == nil %>
+          <p>no image </p>
+        <% else %>
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <%= link_to result do %>
+              <%= image_tag result.image.image1.url ,
+                class: "img-fluid" %>
+              <%= result.name %>
+            <% end %>
+            <p>$<%= result.formatted_price %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

@@ -18,5 +18,10 @@ $('.bootpopup').click(function(){
   });
     $(targetmodal).modal({show:true});
   return false;
+});
 
+$(document).on('ready page:load', function() {
+$(".dropdown-menu a").click(function() {
+    $(this).closest(".dropdown-menu").prev().dropdown("toggle");
+});
 });

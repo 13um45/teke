@@ -18,8 +18,8 @@
     border-radius:0 !important;
  }
 
-.btn.sharp {
-  border-radius:0;
+.sharp {
+  border-radius:0 !important;
 }
 
 a {

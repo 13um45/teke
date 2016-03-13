@@ -1,15 +1,12 @@
 class ProductsController < ApplicationController
 
   before_action :require_logged_in, except: [:index, :show, :rings,
-    :earrings, :necklaces, :bracelets]
+    :earrings, :necklaces, :bracelets, :low_high]
 
   def index
     @products = Product.active
-    #sorting by price
-    #low-high
-    @p_low_high = Product.order(:price)
     #high-low
-    @p_hig_low = @p_low_high.reverse
+    # @p_high_low = @p_low_high.reverse
     #sorting by name
     #a-z
     @p_name = Product.order(:name)
@@ -21,20 +18,49 @@ class ProductsController < ApplicationController
     @order_item = current_order.order_items.new
   end
 
+  def low_high
+    @p_low_high = Product.active.order(:price)
+
+    respond_to do |format|
+      format.html # show_rec_horses.html.erb
+      format.js   # show_rec_horses.js.erb
+    end
+  end
+
   def rings
     @rings  = Product.rings.active
+
+    respond_to do |format|
+      format.html # show_rec_horses.html.erb
+      format.js   # show_rec_horses.js.erb
+    end
   end
 
   def earrings
     @earrings  = Product.earrings.active
+
+    respond_to do |format|
+      format.html # show_rec_horses.html.erb
+      format.js   # show_rec_horses.js.erb
+    end
   end
 
   def necklaces
     @necklaces  = Product.necklaces.active
+
+    respond_to do |format|
+      format.html # show_rec_horses.html.erb
+      format.js   # show_rec_horses.js.erb
+    end
   end
 
   def bracelets
     @bracelets  = Product.bracelets.active
+
+    respond_to do |format|
+      format.html # show_rec_horses.html.erb
+      format.js   # show_rec_horses.js.erb
+    end
   end
 
   def show
