@@ -1,23 +1,42 @@
 <br>
 <div class="container">
   <% if @bracelets == nil %>
-  <p>no bracelets</p>
+    <p>no bracelets</p>
   <% else %>
-  <div class="row">
-    <% @bracelets.each do |bracelet| %>
-      <% if bracelet.image == nil %>
-        <p>no image </p>
-      <% else %>
-    <div class="col-md-3 col-sm-6 col-xs-12">
-      <%= link_to bracelet do %>
-        <%= image_tag bracelet.image.image1.url ,
-          class: "img-fluid" %>
-        <%= bracelet.name %>
+    <div class="row hidden-sm-down">
+      <% @bracelets.each do |bracelet| %>
+        <% if bracelet.image == nil %>
+          <p>no image </p>
+        <% else %>
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <%= link_to bracelet do %>
+              <%= image_tag bracelet.image.image1.url ,
+                class: "img-fluid" %>
+              <%= bracelet.name %>
+            <% end %>
+            <p>$<%= bracelet.formatted_price %></p>
+          </div>
+        <% end %>
       <% end %>
-      <p>$<%= bracelet.formatted_price %></p>
     </div>
-      <% end %>
-    <% end %>
-  </div>
-<% end %>
+  <% end %>
+  <% @bracelets.each do |bracelet| %>
+    <div class="row hidden-md-up pindex" data-link="<%= products_bracelets_path(bracelet) %>">
+      <div class="col-xs-5">
+        <%= link_to bracelet do %>
+          <%= image_tag bracelet.image.image1.url ,
+            class: "img-fluid" %>
+        <% end %>
+      </div>
+      <div class="col-xs-7">
+        <br>
+        <br>
+        <p>
+          <%= bracelet.name %><br>
+          $<%= bracelet.formatted_price %>
+        </p>
+      </div>
+    </div>
+     <div role="separator" class="dropdown-divider hidden-md-up"></div>
+  <% end %>
 </div>

@@ -1,23 +1,43 @@
 <br>
 <div class="container">
   <% if @rings == nil %>
-  <p>no rings</p>
+    <p>no rings</p>
   <% else %>
-  <div class="row">
-    <% @rings.each do |ring| %>
-      <% if ring.image == nil %>
-        <p>no image </p>
-      <% else %>
-    <div class="col-md-3 col-sm-6 col-xs-12">
-      <%= link_to ring do %>
-        <%= image_tag ring.image.image1.url ,
-          class: "img-fluid" %>
-        <%= ring.name %>
+    <div class="row hidden-sm-down">
+      <% @rings.each do |ring| %>
+        <% if ring.image == nil %>
+          <p>no image </p>
+        <% else %>
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <%= link_to ring do %>
+              <%= image_tag ring.image.image1.url ,
+                class: "img-fluid" %>
+              <%= ring.name %>
+            <% end %>
+            <p>$<%= ring.formatted_price %></p>
+          </div>
+        <% end %>
       <% end %>
-      <p>$<%= ring.formatted_price %></p>
     </div>
-      <% end %>
-    <% end %>
-  </div>
-<% end %>
+  <% end %>
+  <% @rings.each do |ring| %>
+    <div class="row hidden-md-up pindex" data-link="<%= products_rings_path(ring) %>">
+      <div class="col-xs-5">
+        <%= link_to ring do %>
+          <%= image_tag ring.image.image1.url ,
+            class: "img-fluid" %>
+        <% end %>
+      </div>
+      <div class="col-xs-7">
+        <br>
+        <br>
+        <p>
+          <%= ring.name %><br>
+          $<%= ring.formatted_price %>
+        </p>
+      </div>
+    </div>
+     <div role="separator" class="dropdown-divider hidden-md-up"></div>
+  <% end %>
 </div>
+

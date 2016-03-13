@@ -1,23 +1,42 @@
 <br>
 <div class="container">
   <% if @necklaces == nil %>
-  <p>no necklaces</p>
+    <p>no necklaces</p>
   <% else %>
-  <div class="row">
-    <% @necklaces.each do |necklace| %>
-      <% if necklace.image == nil %>
-        <p>no image </p>
-      <% else %>
-    <div class="col-md-3 col-sm-6 col-xs-12">
-      <%= link_to necklace do %>
-        <%= image_tag necklace.image.image1.url ,
-          class: "img-fluid" %>
-        <%= necklace.name %>
+    <div class="row hidden-sm-down">
+      <% @necklaces.each do |necklace| %>
+        <% if necklace.image == nil %>
+          <p>no image </p>
+        <% else %>
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <%= link_to necklace do %>
+              <%= image_tag necklace.image.image1.url ,
+                class: "img-fluid" %>
+              <%= necklace.name %>
+            <% end %>
+            <p>$<%= necklace.formatted_price %></p>
+          </div>
+        <% end %>
       <% end %>
-      <p>$<%= necklace.formatted_price %></p>
     </div>
-      <% end %>
-    <% end %>
-  </div>
-<% end %>
+  <% end %>
+  <% @necklaces.each do |necklace| %>
+    <div class="row hidden-md-up pindex" data-link="<%= products_necklaces_path (necklace) %>">
+      <div class="col-xs-5">
+        <%= link_to necklace do %>
+          <%= image_tag necklace.image.image1.url ,
+            class: "img-fluid" %>
+        <% end %>
+      </div>
+      <div class="col-xs-7">
+        <br>
+        <br>
+        <p>
+          <%= necklace.name %>
+          $<%= necklace.formatted_price %>
+        </p>
+      </div>
+    </div>
+     <div role="separator" class="dropdown-divider hidden-md-up"></div>
+  <% end %>
 </div>

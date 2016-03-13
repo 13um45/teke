@@ -1,25 +1,42 @@
 <br>
 <div class="container">
-  <div id="prindex">
-      <% if @products == nil %>
-      <p>no products</p>
-      <% else %>
-      <div class="row">
-        <% @products.each do |product| %>
-          <% if product.image == nil %>
-            <p>no image </p>
-          <% else %>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <%= link_to product do %>
-            <%= image_tag product.image.image1.url ,
-              class: "img-fluid" %>
-            <%= product.name %>
-          <% end %>
-          <p>$<%= product.formatted_price %></p>
-        </div>
-          <% end %>
+  <% if @products == nil %>
+    <p>no products</p>
+  <% else %>
+    <div class="row hidden-sm-down">
+      <% @products.each do |product| %>
+        <% if product.image == nil %>
+          <p>no image </p>
+        <% else %>
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <%= link_to product do %>
+              <%= image_tag product.image.image1.url ,
+                class: "img-fluid" %>
+              <%= product.name %>
+            <% end %>
+            <p>$<%= product.formatted_price %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+  <% @products.each do |product| %>
+    <div class="row hidden-md-up pindex" data-link="<%= product_path(product) %>">
+      <div class="col-xs-5">
+        <%= link_to product do %>
+          <%= image_tag product.image.image1.url ,
+            class: "img-fluid" %>
         <% end %>
       </div>
-    <% end %>
-  </div>
+      <div class="col-xs-7">
+        <br>
+        <br>
+        <p>
+          <%= product.name %><br>
+          $<%= product.formatted_price %>
+        </p>
+      </div>
+    </div>
+     <div role="separator" class="dropdown-divider hidden-md-up"></div>
+  <% end %>
 </div>
