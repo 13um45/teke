@@ -51,3 +51,13 @@ a:hover {
   background-color: #333333 !important;
   border-color: #000000 !important;
 }
+
+.nopaddingr {
+   padding-right: 0 !important;
+   margin: 0 !important;
+}
+
+.nopaddingl {
+   padding-left: 0 !important;
+   margin: 0 !important;
+}

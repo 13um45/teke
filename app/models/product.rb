@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  include SearchableByName
+  include PgSearch
 
   has_many :order_items
   has_one :image, dependent: :destroy
@@ -15,6 +15,7 @@ class Product < ActiveRecord::Base
   scope :sold_out, -> { where(active: false) }
   scope :active, -> {where("quantity >= ?", 1)}
 
+  pg_search_scope :search, :against => [:name, :description]
 
 
   def sold_out

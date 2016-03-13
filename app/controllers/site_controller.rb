@@ -4,9 +4,7 @@ class SiteController < ApplicationController
     term = params[:term]
     return if term.blank?
 
-    name = Product.search_name(params[:term])
-    description = Product.search_description(params[:term])
-    @results = (name + description).uniq
+    @results = Product.search(params[:term])
 
 
     respond_to do |format|

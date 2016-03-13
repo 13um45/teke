@@ -35,6 +35,7 @@ gem 'stripe'
 
 gem 'better_errors'
 
+gem 'pg_search'
 
 ruby '2.2.3'
 
