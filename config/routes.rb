@@ -13,7 +13,6 @@ Rails.application.routes.draw do
 
   get 'carts/show'
 
-  get 'products/low_high'
   get 'products/rings'
   get 'products/earrings'
   get 'products/necklaces'

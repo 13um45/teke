@@ -18,15 +18,6 @@ class ProductsController < ApplicationController
     @order_item = current_order.order_items.new
   end
 
-  def low_high
-    @p_low_high = Product.active.order(:price)
-
-    respond_to do |format|
-      format.html # show_rec_horses.html.erb
-      format.js   # show_rec_horses.js.erb
-    end
-  end
-
   def rings
     @rings  = Product.rings.active
 
