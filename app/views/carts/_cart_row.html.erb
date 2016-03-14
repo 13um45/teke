@@ -8,19 +8,16 @@
     </div>
     <div class="col-md-2 col-xs-12 text-xs-center text-md-left">
       <br>
-      <br>
       <h7 class=""><%= product.name %></h7>
       <% end %>
     </div>
     <div class="col-md-2 col-xs-2">
-      <br>
       <br>
       <h7>
         <%= number_to_currency order_item.formatted_unit_price %>
       </h7>
     </div>
     <div class="col-md-3 col-xs-7">
-      <br>
       <br>
       <div class="input-group">
          <%= f.number_field :quantity, value: order_item.quantity.to_i, class: " form-control form-control-sm", min: 1, max: order_item.product.quantity %>
@@ -34,7 +31,6 @@
       </div>
     </div>
     <div class="col-md-2 col-xs-3">
-      <br>
       <br>
       <h7 class="pull-xs-right">
         <%= number_to_currency order_item.formatted_total_price %>
