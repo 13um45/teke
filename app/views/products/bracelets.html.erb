@@ -21,7 +21,7 @@
     </div>
   <% end %>
   <% @bracelets.each do |bracelet| %>
-    <div class="row hidden-md-up pindex" data-link="<%= products_bracelets_path(bracelet) %>">
+    <div class="row hidden-md-up pindex" data-link="<%= product_path(bracelet) %>">
       <div class="col-xs-5">
         <%= link_to bracelet do %>
           <%= image_tag bracelet.image.image1.url ,

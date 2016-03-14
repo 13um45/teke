@@ -21,7 +21,7 @@
     </div>
   <% end %>
   <% @rings.each do |ring| %>
-    <div class="row hidden-md-up pindex" data-link="<%= products_rings_path(ring) %>">
+    <div class="row hidden-md-up pindex" data-link="<%= product_path(ring) %>">
       <div class="col-xs-5">
         <%= link_to ring do %>
           <%= image_tag ring.image.image1.url ,

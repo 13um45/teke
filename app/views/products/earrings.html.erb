@@ -21,7 +21,7 @@
     </div>
   <% end %>
   <% @earrings.each do |earring| %>
-    <div class="row hidden-md-up pindex" data-link="<%= products_earrings_path(earring) %>">
+    <div class="row hidden-md-up pindex" data-link="<%= product_path(earring) %>">
       <div class="col-xs-5">
         <%= link_to earring do %>
           <%= image_tag earring.image.image1.url ,
